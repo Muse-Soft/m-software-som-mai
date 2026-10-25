@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sớm Mai — Cà phê specialty</title>
+<meta name="description" content="Sớm Mai — quán cà phê specialty: rang mỗi tuần, pha bằng tay.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F3EDE3; --bg2:#E4D9C6; --ink:#241A12; --muted:#6B4E35;
+    --accent:#9A6A2F; --line:#B8A88F;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Be Vietnam Pro",sans-serif;font-size:17px;line-height:1.7}
+  img{display:block;width:100%;height:100%;object-fit:cover}
+  h1,h2,h3{font-family:"Lora",serif;margin:0;line-height:1.25}
+  a{color:inherit}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+  section{padding:96px 0}
+  .folio{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--line);margin-bottom:8px}
+  h2{font-size:40px;font-weight:700}
+  .lead{color:var(--muted);max-width:640px}
+  .btn{display:inline-block;background:var(--accent);color:#F3EDE3;text-decoration:none;font-weight:700;padding:12px 28px;border-radius:999px;border:0;cursor:pointer;font-family:inherit;font-size:17px}
+  .btn:hover{filter:brightness(1.08)}
+  figcaption{font-size:13px;font-style:italic;color:var(--muted);margin-top:8px}
+
+  /* Hero — trang bìa */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;padding:0;color:#F3EDE3}
+  .hero-media{position:absolute;inset:0}
+  .hero-media img{aspect-ratio:16/9}
+  .hero-media::after{content:"";position:absolute;inset:0;background:rgba(20,12,6,.30)}
+  .hero-inner{position:relative;padding:64px 24px 72px;max-width:1200px;margin:0 auto;width:100%}
+  .hero h1{font-size:56px}
+  .hero p{font-size:20px;margin:12px 0 24px;max-width:560px}
+  .hero .mast{font-size:13px;letter-spacing:.2em;text-transform:uppercase;opacity:.9}
+
+  /* Khối 2 — câu chuyện hạt */
+  .story{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+  .story-photos{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+  .ph45{aspect-ratio:4/5}
+
+  /* Khối 3 — thực đơn */
+  .menu{background:var(--bg2)}
+  .menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:32px}
+  .dish{background:var(--bg);border:1px solid var(--line);padding:16px}
+  .dish .sq{aspect-ratio:1/1}
+  .dish h3{font-size:28px;margin-top:16px}
+  .dish .price{color:var(--accent);font-weight:700}
+  .dish p{color:var(--muted);margin:8px 0}
+  .roast{display:flex;align-items:center;gap:6px;margin:10px 0 4px}
+  .roast i{width:10px;height:10px;border-radius:50%;border:1px solid var(--line);display:inline-block}
+  .roast i.on{background:var(--accent);border-color:var(--accent)}
+  .roast span{font-size:13px;color:var(--muted);margin-left:6px}
+  .note{font-size:14px;color:var(--muted)}
+
+  /* Khối 4 — quy trình */
+  .steps{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:32px}
+  .step .r32{aspect-ratio:3/2}
+  .step h3{font-size:28px;margin-top:12px}
+  .step .num{font-family:"Lora",serif;font-size:28px;color:var(--accent)}
+  .step p{color:var(--muted)}
+
+  /* Khối 5 — không gian + cupping */
+  .space{background:var(--bg2)}
+  .space-grid{display:grid;grid-template-columns:2fr 1fr;gap:32px;margin-top:32px}
+  .space-grid .big{aspect-ratio:3/2}
+  .space-grid .smalls{display:grid;gap:32px}
+  .space-grid .smalls figure{aspect-ratio:3/2}
+  .cupping{margin-top:32px;border-top:1px solid var(--line);padding-top:24px;display:flex;flex-wrap:wrap;gap:16px 48px;align-items:center}
+  .cupping strong{font-family:"Lora",serif;font-size:24px}
+
+  /* Khối 6 — liên hệ */
+  .contact-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;margin-top:32px;align-items:start}
+  form{display:grid;gap:16px}
+  label{font-weight:500;font-size:15px}
+  input,textarea{width:100%;padding:12px 14px;border:1px solid var(--line);background:#fff;font:inherit;font-size:16px;color:var(--ink)}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .contact-side .ph43{aspect-ratio:4/3}
+  .contact-side p{color:var(--muted)}
+  #formMsg{display:none;color:var(--accent);font-weight:700}
+
+  footer{background:var(--bg2);color:var(--muted);font-size:14px;padding:32px 0}
+  footer p{margin:4px 0}
+
+  @media (max-width:768px){
+    section{padding:64px 0}
+    .hero h1{font-size:40px}
+    .story,.steps,.contact-grid{grid-template-columns:1fr}
+    .menu-grid{grid-template-columns:1fr 1fr}
+    .space-grid{grid-template-columns:1fr}
+  }
+  @media (max-width:480px){
+    section{padding:48px 0}
+    .hero h1{font-size:32px}
+    .menu-grid,.story-photos,.row2{grid-template-columns:1fr}
+    h2{font-size:32px}
+  }
+</style>
+</head>
+<body>
+
+<!-- 1 · HERO -->
+<header class="hero">
+  <div class="hero-media"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1920&auto=format&fit=crop" alt="Ly cà phê đang được rót"></div>
+  <div class="hero-inner">
+    <p class="mast">Tạp chí cà phê · Số mở đầu</p>
+    <h1>Sớm Mai</h1>
+    <p>Rang mỗi tuần. Pha bằng tay.</p>
+    <a class="btn" href="#thuc-don">Xem thực đơn</a>
+  </div>
+</header>
+
+<main>
+<!-- 2 · CÂU CHUYỆN HẠT -->
+<section id="cau-chuyen">
+  <div class="wrap story">
+    <div>
+      <p class="folio">01 — Câu chuyện hạt</p>
+      <h2>Từ nông trại đến ly cà phê</h2>
+      <p>Hạt của Sớm Mai được hái chín từ những nông trại nhỏ, phơi nắng chậm rồi rang từng mẻ nhỏ mỗi tuần — không rang ồ ạt, không để hạt cũ. Mỗi mẻ rang đều được nếm thử trước khi lên kệ.</p>
+      <p class="lead">Khi hạt đến tay bạn, đó là cả một hành trình: đất, nắng, bàn tay người nông dân, bàn tay người rang — và cuối cùng là bàn tay người pha.</p>
+    </div>
+    <div class="story-photos">
+      <figure><div class="ph45"><img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?q=80&w=900&auto=format&fit=crop" alt="Hạt cà phê rang"></div><figcaption>Hạt rang mẻ nhỏ mỗi tuần.</figcaption></figure>
+      <figure><div class="ph45"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=900&auto=format&fit=crop" alt="Ly cà phê buổi sáng"></div><figcaption>Ly cà phê đầu ngày, pha thủ công.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · THỰC ĐƠN -->
+<section class="menu" id="thuc-don">
+  <div class="wrap">
+    <p class="folio">02 — Thực đơn</p>
+    <h2>Pha tay &amp; hạt rang</h2>
+    <p class="lead">Giá dưới đây là giá mẫu. Mỗi món đều kèm thang rang 5 nấc để bạn chọn theo khẩu vị.</p>
+    <div class="menu-grid">
+      <article class="dish">
+        <div class="sq"><img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=900&auto=format&fit=crop" alt="Cà phê pour-over"></div>
+        <h3>Pour-over Sớm Mai</h3>
+        <div class="roast" aria-label="Mức rang 2 trên 5"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><span>Rang nhạt — nốt cam, mật ong</span></div>
+        <p>Rót chậm, nước 92°C, hương trái cây sáng và hậu vị sạch.</p>
+        <p class="price">65.000đ</p>
+      </article>
+      <article class="dish">
+        <div class="sq"><img src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?q=80&w=900&auto=format&fit=crop" alt="Ly espresso"></div>
+        <h3>Espresso Đậm</h3>
+        <div class="roast" aria-label="Mức rang 4 trên 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><span>Rang đậm vừa — nốt cacao, đường nâu</span></div>
+        <p>Chiết xuất đậm, lớp crema dày, hợp uống đen hoặc pha sữa.</p>
+        <p class="price">45.000đ</p>
+      </article>
+      <article class="dish">
+        <div class="sq"><img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=900&auto=format&fit=crop" alt="Cà phê sữa đá"></div>
+        <h3>Cà phê sữa Sớm Mai</h3>
+        <div class="roast" aria-label="Mức rang 3 trên 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><span>Rang vừa — nốt hạt dẻ, caramel</span></div>
+        <p>Cà phê đậm pha cùng sữa tươi, ngọt dịu, mát lành buổi sáng.</p>
+        <p class="price">55.000đ</p>
+      </article>
+      <article class="dish">
+        <div class="sq"><img src="https://images.unsplash.com/photo-1512568400610-62da28bc8a13?q=80&w=900&auto=format&fit=crop" alt="Hạt cà phê rang"></div>
+        <h3>Gói hạt rang — Cầu Đất</h3>
+        <div class="roast" aria-label="Mức rang 2 trên 5"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><span>Rang nhạt — nốt cam, mật ong</span></div>
+        <p>Hạt Arabica rang mẻ nhỏ, đóng gói ngay sau khi rang.</p>
+        <p class="price">180.000đ / gói</p>
+      </article>
+      <article class="dish">
+        <div class="sq"><img src="https://images.unsplash.com/photo-1521302080334-4bebac2763a6?q=80&w=900&auto=format&fit=crop" alt="Hạt cà phê"></div>
+        <h3>Gói hạt rang — Đắk Lắk</h3>
+        <div class="roast" aria-label="Mức rang 4 trên 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><span>Rang đậm vừa — nốt cacao, đường nâu</span></div>
+        <p>Robusta — Arabica phối trộn, đậm đà, hợp pha phin và espresso.</p>
+        <p class="price">220.000đ / gói</p>
+      </article>
+      <article class="dish">
+        <div class="sq"><img src="https://images.unsplash.com/photo-1524350876685-274059332603?q=80&w=900&auto=format&fit=crop" alt="Latte art"></div>
+        <h3>Gói hạt rang — Bản đặc biệt</h3>
+        <div class="roast" aria-label="Mức rang 3 trên 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><span>Rang vừa — nốt hạt dẻ, caramel</span></div>
+        <p>Mẻ rang giới hạn theo mùa, số lượng có hạn mỗi tuần.</p>
+        <p class="price">320.000đ / gói</p>
+      </article>
+    </div>
+    <p class="note">Cà phê pha tay: 45.000–85.000đ · Gói hạt rang: 180.000–320.000đ · Tất cả đều là giá mẫu.</p>
+  </div>
+</section>
+
+<!-- 4 · QUY TRÌNH PHA -->
+<section id="quy-trinh">
+  <div class="wrap">
+    <p class="folio">03 — Quy trình pha</p>
+    <h2>Pour-over &amp; espresso, từng bước một</h2>
+    <div class="steps">
+      <article class="step">
+        <div class="r32"><img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=1000&auto=format&fit=crop" alt="Barista xay hạt cà phê"></div>
+        <p class="num">01</p><h3>Xay hạt tươi</h3>
+        <p>Hạt chỉ xay ngay trước khi pha, để hương thơm không kịp bay đi.</p>
+      </article>
+      <article class="step">
+        <div class="r32"><img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=1000&auto=format&fit=crop" alt="Ủ cà phê pour-over"></div>
+        <p class="num">02</p><h3>Ủ nở (bloom)</h3>
+        <p>Rót một ít nước nóng, chờ 30 giây cho bột cà phê nở đều và thoát khí.</p>
+      </article>
+      <article class="step">
+        <div class="r32"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=1000&auto=format&fit=crop" alt="Rót nước pha cà phê"></div>
+        <p class="num">03</p><h3>Rót chậm theo vòng</h3>
+        <p>Rót nước theo vòng tròn đều tay, giữ nhiệt độ ổn định suốt quá trình chiết xuất.</p>
+      </article>
+      <article class="step">
+        <div class="r32"><img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=1000&auto=format&fit=crop" alt="Ly latte art hoàn thành"></div>
+        <p class="num">04</p><h3>Rót sữa &amp; thưởng thức</h3>
+        <p>Với espresso: chiết xuất 25–30 giây; với sữa: đánh bọt mịn rồi rót latte art.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · KHÔNG GIAN + LỚP CUPPING -->
+<section class="space" id="khong-gian">
+  <div class="wrap">
+    <p class="folio">04 — Không gian</p>
+    <h2>Một góc yên tĩnh để bắt đầu ngày mới</h2>
+    <div class="space-grid">
+      <figure class="big"><img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1400&auto=format&fit=crop" alt="Không gian quán cà phê"></figure>
+      <div class="smalls">
+        <figure><img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=900&auto=format&fit=crop" alt="Góc ngồi trong quán"></figure>
+        <figure><img src="https://images.unsplash.com/photo-1522992319-0365e5f11656?q=80&w=900&auto=format&fit=crop" alt="Quầy pha chế"></figure>
+      </div>
+    </div>
+    <div class="cupping">
+      <div><strong>Lớp cupping cuối tuần</strong><p style="margin:0;color:var(--muted)">Thứ Bảy &amp; Chủ Nhật, sáng 9h — nếm thử các mẻ rang mới cùng đội ngũ Sớm Mai. Lịch mẫu, số chỗ có hạn.</p></div>
+      <a class="btn" href="#lien-he">Giữ chỗ</a>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · LIÊN HỆ / ĐẶT BÀN -->
+<section id="lien-he">
+  <div class="wrap contact-grid">
+    <div>
+      <p class="folio">05 — Liên hệ / đặt bàn</p>
+      <h2>Đặt bàn trước, cà phê đã sẵn sàng</h2>
+      <form id="bookingForm">
+        <div><label for="name">Tên của bạn</label><input id="name" name="name" type="text" required></div>
+        <div><label for="phone">Số điện thoại</label><input id="phone" name="phone" type="tel" required></div>
+        <div class="row2">
+          <div><label for="date">Ngày</label><input id="date" name="date" type="date" required></div>
+          <div><label for="time">Giờ</label><input id="time" name="time" type="time" required></div>
+        </div>
+        <div><label for="note">Ghi chú</label><textarea id="note" name="note" rows="3" placeholder="Số người, yêu cầu đặc biệt…"></textarea></div>
+        <button class="btn" type="submit">Gửi yêu cầu đặt bàn</button>
+        <p id="formMsg">Đã ghi nhận! Đây là bản giao diện mẫu — yêu cầu chưa được gửi đi thật.</p>
+        <p class="note">Form chỉ là giao diện mẫu, không gửi dữ liệu đi đâu.</p>
+      </form>
+    </div>
+    <aside class="contact-side">
+      <div class="ph43"><img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=900&auto=format&fit=crop" alt="Tách cà phê trên bàn"></div>
+      <p><strong style="color:var(--ink)">Sớm Mai — Cà phê specialty</strong><br>
+      Địa chỉ: [CẦN BỔ SUNG]<br>
+      Điện thoại: [CẦN BỔ SUNG]<br>
+      Giờ mở cửa: [CẦN BỔ SUNG]</p>
+    </aside>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Sớm Mai — Cà phê specialty</p>
+    <p>Ảnh trên trang là ảnh mẫu (Unsplash), dùng để minh họa bố cục — không phải ảnh thật của quán. Giá là giá mẫu.</p>
+  </div>
+</footer>
+
+<script>
+document.getElementById('bookingForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  document.getElementById('formMsg').style.display = 'block';
+});
+</script>
+</body>
+</html>
